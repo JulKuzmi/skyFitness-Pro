@@ -6,9 +6,11 @@ import { NotFoundPage } from './page/NotFound/NotFoundPage'
 import { SignUpPage } from '../src/page/SignUp/SignUpPage'
 import { LoginPage } from './page/Login/LoginPage'
 import { ProfilePage } from './page/Profile/ProfilePage'
+import { PageLayout } from './components/Layout/PageLayout'
 export const AppRoutes = () => {
     return (
         <Routes>
+            <Route path="/" element={<PageLayout />}></Route>
             <Route index element={<MainPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
