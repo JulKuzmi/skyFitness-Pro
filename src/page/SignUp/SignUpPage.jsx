@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './SignUp.style'
-import AuthPage from '../../Auth/AuthPage'
+import AuthPage from '../../components/Auth/AuthPage'
 
 export const SignUpPage = () => {
     return (
