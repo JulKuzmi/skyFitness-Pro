@@ -5,7 +5,7 @@ import AuthPage from '../../components/Auth/AuthPage'
 export const SignUpPage = () => {
     return (
         <S.PageWrapper>
-            <AuthPage />
+            <AuthPage isLoginMode={false} />
         </S.PageWrapper>
     )
 }

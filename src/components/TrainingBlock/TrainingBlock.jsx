@@ -1,4 +1,10 @@
-// import { Link } from 'react-router-dom'
-// import * as S from './style'
+import * as S from './style'
 
-export const TrainingBlock = ({ courses }) => {}
+export const TrainingBlock = ({ urlImg, link, nameCourse }) => {
+    return (
+        <S.SectionTraining to={link}>
+            <S.ImgTraining src={urlImg} />
+            <S.TitleTraining>{nameCourse}</S.TitleTraining>
+        </S.SectionTraining>
+    )
+}
