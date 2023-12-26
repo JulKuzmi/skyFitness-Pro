@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import * as S from './AuthPage.style'
 import { useEffect, useState } from 'react'
+import { setUser } from '../../store/slices/userSlices'
+import { useDispatch } from 'react-redux'
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+} from 'firebase/auth'
 
 export default function AuthPage({ isLoginMode = false }) {
     const [error, setError] = useState(null)
@@ -10,26 +17,39 @@ export default function AuthPage({ isLoginMode = false }) {
     const [repeatPassword, setRepeatPassword] = useState('')
     const [disable, setDisable] = useState(false)
     let navigate = useNavigate()
+    const dispatch = useDispatch()
 
-    const loginUser = () => {
-        console.log('юзер вошел ')
-    }
-
-    const registerUser = () => {
-        console.log('регистрация юзера')
-    }
-
-    const handleLogin = async () => {
+    const loginUser = (email, password) => {
+        const auth = getAuth()
         if (!email || !password) {
             setError('Заполните все поля')
             return
         }
         setDisable(true)
-        loginUser()
-        setDisable(false)
+        signInWithEmailAndPassword(auth, email, password)
+            .then(({ user }) => {
+                localStorage.setItem('user', JSON.stringify(user))
+                localStorage.setItem('token', JSON.stringify(user.accessToken))
+                console.log('user ->', user)
+                dispatch(
+                    setUser({
+                        email: user.email,
+                        id: user.uid,
+                        login: user.login,
+                        password: user.password,
+                        token: user.accessToken,
+                    }),
+                )
+                navigate('/')
+            })
+            .catch(console.error)
+            .finally(() => {
+                setDisable(false)
+            })
     }
 
-    const handleRegister = async () => {
+    const registerUser = (email, password, repeatPassword) => {
+        const auth = getAuth()
         if (!email || !password || !repeatPassword) {
             setError('Заполните все поля')
             return
@@ -39,8 +59,26 @@ export default function AuthPage({ isLoginMode = false }) {
             return
         }
         setDisable(true)
-        registerUser()
-        setDisable(false)
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(({ user }) => {
+                localStorage.setItem('user', JSON.stringify(user))
+                localStorage.setItem('token', JSON.stringify(user.accessToken))
+                console.log('user ->', user)
+                dispatch(
+                    setUser({
+                        email: user.email,
+                        id: user.uid,
+                        login: user.login,
+                        password: user.password,
+                        token: user.accessToken,
+                    }),
+                )
+                navigate('/')
+            })
+            .catch(console.error)
+            .finally(() => {
+                setDisable(false)
+            })
     }
 
     useEffect(() => {
@@ -85,9 +123,7 @@ export default function AuthPage({ isLoginMode = false }) {
                                 </p>
                             ) : (
                                 <S.PrimaryButton
-                                    onClick={() =>
-                                        handleLogin({ email, password })
-                                    }
+                                    onClick={() => loginUser(email, password)}
                                 >
                                     Войти
                                 </S.PrimaryButton>
@@ -138,15 +174,25 @@ export default function AuthPage({ isLoginMode = false }) {
                                     Регистрируем пользователя...
                                 </p>
                             ) : (
-                                <S.PrimaryButton onClick={handleRegister}>
+                                <S.PrimaryButton
+                                    onClick={() =>
+                                        registerUser(
+                                            email,
+                                            password,
+                                            repeatPassword,
+                                        )
+                                    }
+                                >
                                     Зарегистрироваться
                                 </S.PrimaryButton>
                             )}
-                            <Link to="/login">
-                                <p style={{ color: '#000' }}>
-                                    Уже есть аккаунт? Войти
-                                </p>
-                            </Link>
+
+                            <p style={{ color: '#000' }}>
+                                Уже есть аккаунт?{' '}
+                                <Link to="/login">
+                                    <S.linkSingUp>Войти</S.linkSingUp>
+                                </Link>
+                            </p>
                         </S.Buttons>
                     </>
                 )}
