@@ -60,7 +60,7 @@ export const ProfilePage = () => {
                 <S.CourseItems>
                     <S.Item>
                         <S.ItemImg
-                            src="img/card-course/card-yoga.jpeg"
+                            src="img/card-course/card-yoga1.jpeg"
                             alt="card-yoga"
                         />
                         <S.ItemTitle>Йога</S.ItemTitle>
@@ -72,7 +72,7 @@ export const ProfilePage = () => {
                     </S.Item>
                     <S.Item>
                         <S.ItemImg
-                            src="img/card-course/card-stretching.jpeg"
+                            src="img/card-course/card-stretching1.jpeg"
                             alt="card-yoga"
                         />
                         <S.ItemTitle>Стретчинг</S.ItemTitle>
@@ -84,7 +84,7 @@ export const ProfilePage = () => {
                     </S.Item>
                     <S.Item>
                         <S.ItemImg
-                            src="img/card-course/card-bodyflex.jpeg"
+                            src="img/card-course/card-bodyflex1.jpeg"
                             alt="card-yoga"
                         />
                         <S.ItemTitle>Бодифлекс</S.ItemTitle>

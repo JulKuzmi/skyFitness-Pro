@@ -10,7 +10,7 @@ export const PageLayout = () => {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 2000)
+        }, 500)
 
         return () => clearTimeout(timer)
     }, [])

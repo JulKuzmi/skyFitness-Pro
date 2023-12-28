@@ -8,7 +8,6 @@ export default function AuthPage({ isLoginChange = false }) {
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
     const [disable] = useState(false)
-    let navigate = useNavigate()
 
     const handleLoginChange = async () => {
         if (!login) {
@@ -56,7 +55,7 @@ export default function AuthPage({ isLoginChange = false }) {
                         <S.Buttons>
                             {disable ? (
                                 <p style={{ color: '#000' }}>
-                                    Пожалуйста подождите,обновляем логин...
+                                    Подождите,обновляем логин...
                                 </p>
                             ) : (
                                 <S.PrimaryButton
