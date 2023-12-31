@@ -1,4 +1,4 @@
-// import { HeaderPurple } from '../../components/Header/Header'
+import { HeaderPurple } from '../../components/Header/Header'
 import { TrainingBlock } from '../../components/TrainingBlock/TrainingBlock'
 import { HeaderSkeleton } from '../../components/SkeletonsPages/HeaderSkeleton'
 import { TrainingBlockSkeleton } from '../../components/SkeletonsPages/TraininngBlockSkeleton'
@@ -37,7 +37,7 @@ export const MainPage = ({ courses }) => {
                 </S.Wrapper>
             ) : (
                 <S.Wrapper>
-                    {/* <HeaderPurple /> */}
+                    <HeaderPurple />
                     <S.Container>
                         <S.ContentDescription>
                             <S.ContentDescriptionImg src="/img/sale-sticker.png" />

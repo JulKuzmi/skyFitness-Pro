@@ -1,23 +1,18 @@
 import { styled } from 'styled-components'
 
 export const videoPage = styled.main`
-    box-sizing: border-box;
-    padding: 0 30px;
-    width: 100vw;
+    margin-top: 75px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 94px;
+    flex-direction: column;
+    gap: 40px;
 
-    @media (max-width: 768px) {
-        margin-bottom: 40px;
-    }
     @media (max-width: 670px) {
-        margin-bottom: 20px;
+        margin-top: 25px;
+        gap: 20px;
     }
 `
 export const videoPageWrap = styled.div`
     width: 100%;
-    max-width: 1160px;
     display: flex;
     gap: 40px;
     align-items: center;
@@ -67,9 +62,11 @@ export const breadcrumbs = styled.p`
         line-height: 12px;
     }
 `
-export const video = styled.video`
+export const video = styled.iframe`
+    aspect-ratio: 16/9;
     width: 100%;
     z-index: 10;
+    border: 0;
 `
 export const exercise = styled.div`
     margin-top: 45px;
@@ -81,7 +78,7 @@ export const exercise = styled.div`
     @media (max-width: 1280px) and (min-width: 1000px) {
         gap: 30px;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1140px) {
         flex-wrap: wrap;
     }
     @media (max-width: 670px) {
@@ -181,7 +178,6 @@ export const fillProgress = styled.button`
     }
 `
 export const progressBar = styled.section`
-    box-sizing: border-box;
     width: 638px;
     display: flex;
     justify-content: center;
@@ -195,7 +191,7 @@ export const progressBar = styled.section`
         gap: 20px;
         padding: 20px 30px;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1140px) {
         width: 100%;
     }
     @media (max-width: 670px) {
@@ -266,95 +262,69 @@ export const progressBarStatText = styled.p`
         line-height: 12px;
     }
 `
-const progressBarStatPercent = `
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+export const progressBarStatPercent = styled.div`
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgb(${(props) => props.$rgbCode});
 
-  width: 100%;
-  max-width: calc(100% - 250px);
-  height: 36px;
+    width: 100%;
+    max-width: calc(100% - 250px);
+    height: 36px;
 
-  display: flex;
-  align-items: center;
-  border-radius: 22px;
+    display: flex;
+    align-items: center;
+    border-radius: 22px;
 
-  @media (max-width: 1280px) and (min-width: 1000px) {
-    max-width: calc(100% - 200px);
-    height: 28px;
-  }
-  @media (max-width: 670px) {
-    max-width: calc(100% - 150px);
-    height: 20px;
-  }
-  @media (max-width: 374px) {
-    max-width: calc(100% - 110px);
-  }
-`
-export const progressBarStatPercentGreen = styled.div`
-    ${progressBarStatPercent};
-    border: 2px solid rgba(86, 94, 239, 1);
-`
-export const progressBarStatPercentOrange = styled.div`
-    ${progressBarStatPercent};
-    border: 2px solid rgba(255, 109, 0, 1);
-`
-export const progressBarStatPercentPurple = styled.div`
-    ${progressBarStatPercent};
-    border: 2px solid rgba(154, 72, 241, 1);
+    @media (max-width: 1280px) and (min-width: 1000px) {
+        max-width: calc(100% - 200px);
+        height: 28px;
+    }
+    @media (max-width: 670px) {
+        max-width: calc(100% - 150px);
+        height: 20px;
+    }
+    @media (max-width: 374px) {
+        max-width: calc(100% - 110px);
+    }
 `
 
-const progressBarStatPercentColor = `
-  box-sizing: border-box;
-  position: absolute;
-  display: flex;
-
-  align-items: center;
-  justify-content: end;
-  padding-right: 6px;
-  padding-left: 6px;
-
-  color: #fff;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-
-  height: 100%;
-
-  @media (max-width: 1280px) and (min-width: 1000px) {
-    font-size: 18px;
-    line-height: 22px;
-  }
-  @media (max-width: 670px) {
-    font-size: 14px;
-    line-height: 16px;
-  }
-  @media (max-width: 424px) {
-    font-size: 10px;
-    line-height: 10px;
-  }
-
-`
-
-export const progressBarStatPercentColorGreen = styled.div`
-    ${progressBarStatPercentColor};
+export const progressBarStatPercentFill = styled.div`
     width: ${(props) => props.$percent}%;
-    background: rgba(86, 94, 239, 1);
+    height: 100%;
+    background: rgb(${(props) => props.$rgbCode});
+    position: relative;
 `
-export const progressBarStatPercentColorOrange = styled.div`
-    ${progressBarStatPercentColor};
-    width: ${(props) => props.$percent}%;
-    background: rgba(255, 109, 0, 1);
-`
-export const progressBarStatPercentColorPurple = styled.div`
-    ${progressBarStatPercentColor};
-    width: ${(props) => props.$percent}%;
-    background: rgba(154, 72, 241, 1);
+
+export const progressBarStatPercentFillNumber = styled.p`
+    position: absolute;
+    top: 0;
+    ${(props) =>
+        props.$percent < 30
+            ? `right: -50px; color: #000;`
+            : `right: 6px; color: #fff;`}
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+
+    @media (max-width: 1280px) and (min-width: 1000px) {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    @media (max-width: 670px) {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    @media (max-width: 424px) {
+        font-size: 10px;
+        line-height: 10px;
+    }
 `
 
 // progress form
 export const progressFormWrap = styled.div`
     position: fixed;
+    left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.9);
