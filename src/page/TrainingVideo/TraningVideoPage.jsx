@@ -235,7 +235,7 @@ const Done = () => {
     return (
         <S.done>
             <S.doneText>Ваш прогресс засчитан!</S.doneText>
-            <S.doneImg src="/img/VideoPage/done.png" alt="done" />
+            <S.doneImg src="img/" alt="done" />
         </S.done>
     )
 }

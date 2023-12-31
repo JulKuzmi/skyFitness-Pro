@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as S from './style'
-
 export const TrainingBlock = ({ courses }) => {
+    console.log(courses)
     return Object.values(courses).map((course) => {
         return (
             <S.SectionTraining key={course.id}>
