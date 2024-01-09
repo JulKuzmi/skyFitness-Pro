@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { getAuth, signOut } from 'firebase/auth'
 
 export const Header = () => {
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin] = useState(true)
     const [menu, setMenu] = useState(false)
     const [exitForm, setExitForm] = useState(false)
     const { email, login } = useAuth()
@@ -65,7 +65,7 @@ export const Header = () => {
 }
 
 export const HeaderPurple = () => {
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin] = useState(true)
     const [exitForm, setExitForm] = useState(false)
     const [menu, setMenu] = useState(false)
     const { email, login } = useAuth()

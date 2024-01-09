@@ -172,7 +172,7 @@ const ProgressForm = ({ setProgressForm, dataPage, userId }) => {
         patchData[`workout/${dataPage.shortId}/users`] = newArrayUsers
 
         fetch(
-            'https://skyfitnesspro-workout-default-rtdb.europe-west1.firebasedatabase.app/.json',
+            'https://skyfitness-pro-default-rtdb.europe-west1.firebasedatabase.app/.json',
             {
                 method: 'PATCH',
                 body: JSON.stringify(patchData),
@@ -235,7 +235,7 @@ const Done = () => {
     return (
         <S.done>
             <S.doneText>Ваш прогресс засчитан!</S.doneText>
-            <S.doneImg src="img/" alt="done" />
+            <S.doneImg src="/img/PageVideo/done.png" alt="done" />
         </S.done>
     )
 }
