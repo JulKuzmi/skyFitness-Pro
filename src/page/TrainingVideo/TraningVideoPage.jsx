@@ -170,7 +170,7 @@ const ProgressForm = ({ setProgressForm, dataPage, userId }) => {
 
         const patchData = {}
         patchData[`workout/${dataPage.shortId}/users`] = newArrayUsers
-
+        console.log(userId)
         fetch(
             'https://skyfitness-pro-default-rtdb.europe-west1.firebasedatabase.app/.json',
             {
