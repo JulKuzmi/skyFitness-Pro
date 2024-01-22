@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import * as S from './styles.js'
 import { useEffect, useState } from 'react'
 

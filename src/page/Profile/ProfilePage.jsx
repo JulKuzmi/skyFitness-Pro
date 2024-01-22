@@ -138,9 +138,6 @@ export const ProfilePage = ({ courses }) => {
                 {dataCourses ? (
                     <S.CourseItems>
                         {courseCards.map((item, index) => {
-                            console.log(courseCards)
-                            console.log(userId)
-                            console.log()
                             if (
                                 dataCourses[item.courseId].users.find(
                                     (obj) => obj.userId === userId,

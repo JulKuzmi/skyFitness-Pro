@@ -141,7 +141,8 @@ export const TrainingPage = ({ courses }) => {
                         </S.TextDiscriptionYoga>
                     </S.DiscriptionYoga>
 
-                    {!dataCourse.users.find((obj) => obj.userId === userId) ? (
+                    {dataCourse &&
+                    !dataCourse.users.find((obj) => obj.userId === userId) ? (
                         <S.RecordBox>
                             <S.RecordText>
                                 Оставьте заявку на пробное занятие, мы свяжемся

@@ -27,9 +27,9 @@ export const AppRoutes = ({ courses }) => {
                         element={<ProfilePage courses={courses} />}
                     />
                 </Route>
-                <Route path="/signup" element={<SignUpPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
     )
