@@ -1,3 +1,11 @@
+import React from 'react'
+import * as S from './SignUp.style'
+import AuthPage from '../../components/Auth/AuthPage'
+
 export const SignUpPage = () => {
-    return <div>стр регистрации</div>
+    return (
+        <S.PageWrapper>
+            <AuthPage isLoginMode={false} />
+        </S.PageWrapper>
+    )
 }
